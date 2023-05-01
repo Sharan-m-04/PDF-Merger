@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+
+        .nav {
+            background-color: rgb(228, 241, 255);
+            height: 70px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 16px;
+            margin-left: 16px;
+            font-weight: bold;
+        }
+
+        .ulist {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .list {
+            list-style: none;
+            font-size: 16px;
+            padding: 8px;
+        }
+
+        .navLink {
+            text-decoration: none;
+            color: rgb(75, 75, 75);
+            cursor: pointer;
+        }
+
+        .navLink:hover {
+            color: rgb(0, 0, 0);
+        }
+
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dropFile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        input[type=file] {
+            width: 350px;
+            max-width: 100%;
+            color: #444;
+            padding: 5px;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #555;
+        }
+
+        input[type=file]::file-selector-button {
+            margin-right: 20px;
+            border: none;
+            background: #084cdf;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: background .2s ease-in-out;
+        }
+
+        input[type=file]::file-selector-button:hover {
+            background: #0d45a5;
+        }
+
+        .drop-container {
+            position: relative;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed #555;
+            color: #444;
+            cursor: pointer;
+            transition: background .2s ease-in-out, border .2s ease-in-out;
+        }
+
+        .drop-container:hover {
+            background: #eef6ff;
+            border-color: #111;
+        }
+
+        .drop-container:hover .drop-title {
+            color: #222;
+        }
+
+        .drop-title {
+            color: #444;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            transition: color .2s ease-in-out;
+        }
+
+        .mergeBtn {
+            margin-top: 20px;
+            border: none;
+            background: #084cdf;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            width: 10%;
+            font-size: 16px;
+            transition: background .2s ease-in-out;
+        }
+
+        .mergeBtn:hover {
+            background: #0d45a5;
+        }
+
+
+
+        .how-to {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* align-items: center; */
+            margin: auto;
+            margin-top: 20px;
+            width: 90%;
+        }
+
+        .note {
+            font-size: 16px;
+            color: #222;
+        }
+
+        .stepHead {
+            text-align: center;
+            color: black;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .steps {
+            text-align: left;
+            margin: 2px;
+        }
+
+
+        .footer {
+            margin-top: 30px;
+            background-color: #222;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .credits{
+            color: #eaeaea;
+        }
+
+        .footNavCont{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .footNavLink {
+            text-decoration: none;
+            color: #cccccc;
+            cursor: pointer;
+            font-size: 12px;
+            margin: 10px;
+        }
+
+        .footNavLink:hover {
+            color: #949494;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <p class="name">PDF Merger | </p>
+        <ul class="ulist">
+            <li class="list"><a href="/" class="navLink">Home</a></li>
+            <li class="list"><a href="/about" class="navLink">About</a></li>
+            <li class="list"><a href="/contact-us" class="navLink">Contact Us</a></li>
+        </ul>
+    </div>
+    <form class="form" method="post" enctype="multipart/form-data">
+        <div class="dropFile">
+            <label for="images" class="drop-container">
+                <span class="drop-title">Drop files here</span>
+                or
+                <input id="file" name="file" type="file" required multiple accept="application/pdf">
+            </label>
+        </div>
+        <button type="submit" class="mergeBtn">Merge</button>
+    </form>
+    <div class="how-to">
+        <p class="note"><strong>NOTE: </strong> When using our PDF merger website, please ensure that the PDF files you
+            wish to merge are named in ascending order. This means that the file names should be numbered or
+            alphabetized in sequence, such as "1.pdf, 2.pdf, 3.pdf..." or "a.pdf, b.pdf, c.pdf...". By following this
+            naming convention, our website can easily and accurately merge your files in the correct order, ensuring
+            that your final document is organized and easy to navigate. If your files are not named in ascending order,
+            there is a risk that the merged document may be disorganized and difficult to use. Therefore, we strongly
+            recommend that you take the time to rename your files before merging them on our website.</p>
+        <p class="stepHead">How To Use</p>
+        <p class="steps"><strong>Step-1: </strong>Choose the PDF files that you want to merge. You can either drag and
+            drop the files onto the website or click the "Choose" button to browse and select the files from your
+            computer.</p>
+        <p class="steps"><strong>Step-2: </strong>Arrange the files in the correct order if necessary. If the files are
+            not already named in ascending order.</p>
+        <p class="steps"><strong>Step-3: </strong>Click on the "Merge" button to start the merging process and the file
+            will download automatically after the process.</p>
+        <p class="steps"><strong>Step-4: </strong>After downloading or saving the merged PDF file, check to make sure
+            that all pages and content are in the correct order and that there are no errors or missing pages.</p>
+        <p class="steps">That's it! With these simple steps, you can quickly and easily merge your PDF files into one
+            organized document.</p>
+    </div>
+    <div class="footer">
+        <p class="credits">This Website is Developed By Sharan M</p>
+        <div class="footNavCont">
+            <p class="footNav"><a href="/" class="footNavLink">Home</a></p>
+            <p class="footNav"><a href="/about" class="footNavLink">About</a></p>
+            <p class="footNav"><a href="/contact-us" class="footNavLink">Contact Us</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
