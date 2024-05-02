@@ -14,8 +14,7 @@ def home():
         buffer = BytesIO()
         merger.write(buffer)
         buffer.seek(0)
-        return send_file(buffer, as_attachment=True, download_name="Merged.pdf")
-
+        return send_file(buffer, as_attachment=True, download_name="Merged.pdf")
     return render_template("index.html")
 
 @app.route("/about")
